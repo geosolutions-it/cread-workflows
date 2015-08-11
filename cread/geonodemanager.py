@@ -20,11 +20,11 @@ class GeonodeManager:
             self._password = password
         
         def publish_datastore(self, file_absolute_path, store_name):
-            args = {'workspace':'geonode', 'storename':store_name, 'datastore':'datastore', 'extension':'shp', 'content-type':'application/zip'}
+            args = {'workspace':'geonode', 'storename':store_name, 'storeType':'datastores', 'extension':'shp', 'content-type':'application/zip'}
             self._publish_store(file_absolute_path, store_name, **args)
             
         def publish_coveragestore(self, file_absolute_path, store_name):
-            args = {'workspace':'geonode', 'storename':store_name, 'datastore':'coveragestores', 'extension':'geotiff', 'content-type':'image/tiff'}
+            args = {'workspace':'geonode', 'storename':store_name, 'storeType':'coveragestores', 'extension':'geotiff', 'content-type':'image/tiff'}
             self._publish_store(file_absolute_path, store_name, **args)
             
         def _publish_store(self, file_absolute_path, store_name, **kwargs):
@@ -49,15 +49,18 @@ class GeonodeManager:
             url = self._build_URL(**kwargs)
             print "Calling the service endpoint: '" + url + "'"
             response, content = h.request(url, "PUT", chunk, headers)
-            print "The Response is:"
+            print "Headers are: '" + headers['Content-type'] + "'"
+            print "The Response is: "
             print response
-            print "The Content is : '" + content + "'"
+            print "The Content is : '"
+            print content
+            print "'"
         
         def _build_URL(self, **kwargs):
             baseUrl = "http://" + self._domainName + "/geoserver/rest"
             restPath1 = "/workspaces"
             restPath2 = "/" + kwargs['workspace']
-            restPath3 = "/" + kwargs['datastore']
+            restPath3 = "/" + kwargs['storeType']
             restPath4 = "/" + kwargs['storename']
             file = "/file."
             url = baseUrl + restPath1 + restPath2 + restPath3 + restPath4 + file + kwargs['extension']

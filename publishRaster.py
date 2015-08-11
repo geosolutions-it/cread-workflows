@@ -1,8 +1,8 @@
-from geonodemanager import GeonodeManager
+from cread.geonodemanager import GeonodeManager
 
 ##DomainName=string 192.168.50.169:8080
-##StoreName=string belize_roads_coverage_1
-##Filename=string D:\\work\\data\\c-read\\belize_roads_coverage_1.zip
+##StoreName=string landcover_2000
+##Filename=string D:\\work\\data\\Zambia\\geospatial\\raster\\Resampled\\landcover_2000.tif
 ##UserName=string admin
 ##Password=string geoserver
 

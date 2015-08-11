@@ -1,9 +1,29 @@
-from geonodemanager import GeonodeManager
+from cread.geonodemanager import GeonodeManager
+import os
+import zipfile
 
-##DomainName=string 192.168.50.169:8080
-##StoreName=string belize_roads_coverage_1
-##Filename=string D:\\work\\data\\c-read\\belize_roads_coverage_1.zip
+# The data entry form
+##DomainName=string 192.168.50.170:8080
+##StoreName=string police_station_wgs84
+##Layer=vector
 ##UserName=string admin
 ##Password=string geoserver
 
-GeonodeManager("admin", "geoserver", "192.168.50.169:8080").publish_datastore("D:\\work\\data\\c-read\\population_estimates_2010_2013.zip", "population_estimates_2010_2013")
+# Get the path on FileSystem of the layer loaded on QGIS and selected by the user
+myfilepath = processing.getObject(Layer).dataProvider().dataSourceUri()
+
+# Access to the shapefile folder and create a zip to upload it using geoserver REST interface
+(myDirectory,nameFile) = os.path.split(myfilepath)
+zipf = zipfile.ZipFile(os.path.join(myDirectory,'shpUpload.zip'), 'w')
+for file in os.listdir(myDirectory):
+    print file
+    if(str(file) != "shpUpload.zip"):
+        print myDirectory
+        print os.path.join(myDirectory, str(file))
+        print os.path.relpath(os.path.join(myDirectory, str(file)), myDirectory)
+        zipf.write(os.path.join(myDirectory, str(file)), str(file))
+zipf.close()
+zip = str(os.path.join(myDirectory, 'shpUpload.zip'))
+
+# Publish a datastore (e.g. a vector layer)
+GeonodeManager(UserName, Password, str(DomainName)).publish_datastore(zip, str(StoreName))
