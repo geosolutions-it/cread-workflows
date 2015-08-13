@@ -3,7 +3,7 @@ import os
 import zipfile
 
 # The data entry form
-##DomainName=string 192.168.50.170:8080
+##DomainName=string host[:port]
 ##StoreName=string police_station_wgs84
 ##Layer=vector
 ##UserName=string admin

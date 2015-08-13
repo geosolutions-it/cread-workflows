@@ -1,9 +1,18 @@
+import os
 from cread.geonodemanager import GeonodeManager
 
-##DomainName=string 192.168.50.169:8080
+# ##DomainName=string host[:port]
+##DomainName=string 192.168.50.170:8080
+# ##StoreName=string landcover_2000
 ##StoreName=string landcover_2000
-##Filename=string D:\\work\\data\\Zambia\\geospatial\\raster\\Resampled\\landcover_2000.tif
+# ##Filename=string insert the absolute path of a mosaic granule here
+##Layer=raster
 ##UserName=string admin
 ##Password=string geoserver
 
-GeonodeManager("admin", "geoserver", "192.168.50.169:8080").publish_coveragestore("D:\\work\\data\\Zambia\\geospatial\\raster\\Resampled\\landcover_2000.tif", "landcover_2000")
+myfilepath = processing.getObject(Layer).dataProvider().dataSourceUri()
+(myDirectory,nameFile) = os.path.split(myfilepath)
+
+file_abs_path = myDirectory + '/' + nameFile
+
+GeonodeManager(str(UserName), str(Password), str(DomainName)).publish_coveragestore(str(file_abs_path), str(StoreName))
