@@ -16,9 +16,8 @@ STEP 2 - Create the embedded Overviews
 
 http://www.gdal.org/gdal_translate.html
 !INSTRUCTIONS
-.ALGORITHM:script:publishraster
-.PARAMETERS:{"UserName": "admin", "StoreName": "landcover_2000", "Password": "geoserver", "DomainName": "192.168.50.169:8080"}
+.ALGORITHM:script:geonoderasterpublisher
+.PARAMETERS:{"Abstract": "Insert a description", "Password": "your_password", "User": "admin", "Geonode_URL": "http://192.168.50.170:8000", "Title": "Insert a tiltle"}
 .MODE:Normal
 .INSTRUCTIONS:
-STEP 3 - Publish the store on geoserver
 !INSTRUCTIONS

@@ -37,11 +37,8 @@ You can also improve that query performing a more complex filtering but be aware
 
 -> DON'T delete the quote around the [attribute] when you replace the value!
 !INSTRUCTIONS
-.ALGORITHM:script:publishvector
-.PARAMETERS:{"UserName": "admin", "StoreName": "police_station_wgs84", "Password": "geoserver", "DomainName": "192.168.50.169:8080"}
+.ALGORITHM:script:geonodevectorpublisher
+.PARAMETERS:{"Abstract": "Insert a description", "Password": "your_password", "User": "admin", "Geonode_URL": "http://192.168.50.170:8000", "Title": "Insert a tiltle"}
 .MODE:Normal
 .INSTRUCTIONS:
-STEP 3 - Geoserver publication
-
-Publish the store on geoserver
 !INSTRUCTIONS
