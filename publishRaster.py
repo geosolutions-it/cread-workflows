@@ -15,4 +15,6 @@ myfilepath = processing.getObject(Layer).dataProvider().dataSourceUri()
 
 file_abs_path = myDirectory + '/' + nameFile
 
+print file_abs_path
+
 GeonodeManager(str(UserName), str(Password), str(DomainName)).publish_coveragestore(str(file_abs_path), str(StoreName))

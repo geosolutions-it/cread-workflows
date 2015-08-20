@@ -91,8 +91,14 @@ upload = {'base_file': (filename_to_upload, open(abs_path, "rb"), mime_tipe)}
 print "...POST the request..."
 r = client.post(upload_url, files=upload, data=login_data)
 
-print "...Request result:"
-print(json_user)
-print(r.text)
-
-
+try:
+    response_json=json.loads(r.text)
+except Exception:
+    raise ValueError("Error reading the response, the Layer may not be published...\nCheck if the Geonode URL you provided is working and if the Credentials are valid...")
+    
+print ""
+print "******************************************"
+print "** Geonode URL of the published request **"
+print "******************************************"
+print "** " + (base_url+response_json['url'])
+print "******************************************"
