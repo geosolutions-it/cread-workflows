@@ -1,5 +1,10 @@
 .NAME:Process and Publish CSV
 .GROUP:C-READ
+.ALGORITHM:script:createvrt
+.PARAMETERS:{"Geometry_encoding": "wkt", "Geometry_type": "wkbPoint", "Layer_name": "a_layer_name", "Geometry_field_name": "the_geom"}
+.MODE:Normal
+.INSTRUCTIONS:
+!INSTRUCTIONS
 .ALGORITHM:gdalogr:convertformat
 .PARAMETERS:{"OPTIONS": "", "FORMAT": 0}
 .MODE:Normal
