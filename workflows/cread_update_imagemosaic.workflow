@@ -1,10 +1,10 @@
-.NAME:Process and Publish Geotif
+.NAME:Process and Publish Image Mosaic Granule
 .GROUP:C-READ
 .ALGORITHM:gdalogr:translate
-.PARAMETERS:{"ZLEVEL": 6, "SDS": false, "OUTSIZE": 100, "OUTSIZE_PERC": true, "RTYPE": 6, "COMPRESS": 1, "NO_DATA": "", "BIGTIFF": 0, "TILED": false, "JPEGCOMPRESSION": 75, "TFW": false, "PREDICTOR": 1, "EXPAND": 0, "EXTRA": ""}
+.PARAMETERS:{"ZLEVEL": 6, "SDS": false, "OUTSIZE": 100, "OUTSIZE_PERC": true, "RTYPE": 5, "COMPRESS": 4, "NO_DATA": "", "BIGTIFF": 0, "TILED": false, "JPEGCOMPRESSION": 75, "TFW": false, "PREDICTOR": 1, "EXPAND": 0, "EXTRA": ""}
 .MODE:Normal
 .INSTRUCTIONS:
-PUBLISH RASTER LAYER
+OPTIMIZE and PUBLISH RASTER LAYER
 
 -WORKFLOW OVERVIEW-
 Any raster published on a geospatial server must be optimized in order to be efficently served to the clients
@@ -39,33 +39,27 @@ MAIN PARAMS
 Input Vector
 Select on the file system the raster to process
 !INSTRUCTIONS
-.ALGORITHM:script:geonoderasterpublisher
-.PARAMETERS:{"Abstract": "Insert a description", "Password": "your_password", "User": "admin", "Geonode_URL": "http://192.168.50.170:8000", "Title": "Insert a tiltle"}
+.ALGORITHM:script:publishmosaicgranule
+.PARAMETERS:{"Geoserver_URL": "http://192.168.50.170:8080/geoserver", "Image_mosaic_Store_Name": "countryMosaic"}
 .MODE:Normal
-.INSTRUCTIONS:STEP 4/4 - Geonode Layer publication
+.INSTRUCTIONS:
+STEP 4/4 - Geoserver ImageMosaic update
 
-Publish the Raster layer created on a Geonode instance
+Update an Image mosaic with the raster layer created.
+
+The raster will be directly published on  Geoserver , adding a one more time instance to an Imagemosaic datastore
 
 MAIN PARAMS
 
-Geonode URL
+Geoserver URL
 The base URL of the Geonode instance.
 examples:
-http://192.168.50.170:8000
-http://awebsite.geonode.org
+http://192.168.50.170:8080/geosever
+http://awebsite.geonode.org/geoserver
 
-User
-A Username who has the publications grants required
+Image mosaic Store Name
+The name of the datastore published on Geoserver
 
-Password
-The user password
-
-Raster Layer
+Image mosaic Granule to add
 The previously created layer opened in the current project
-
-Title
-A geonode metadata
-
-Abstact
-A geonode metadata
 !INSTRUCTIONS
