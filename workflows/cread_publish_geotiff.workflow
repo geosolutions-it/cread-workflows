@@ -40,7 +40,7 @@ Input Vector
 Select on the file system the raster to process
 !INSTRUCTIONS
 .ALGORITHM:script:geonoderasterpublisher
-.PARAMETERS:{"Abstract": "Insert a description", "Password": "your_password", "User": "admin", "Geonode_URL": "http://192.168.50.170:8000", "Title": "Insert a tiltle"}
+.PARAMETERS:{"Abstract": "Insert a description", "Password": "your_password", "User": "your_username", "Geonode_URL": "http://[ip]:[port]", "Title": "Insert a tiltle"}
 .MODE:Normal
 .INSTRUCTIONS:STEP 4/4 - Geonode Layer publication
 

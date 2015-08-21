@@ -39,8 +39,8 @@ def zipLayer (myfilepath):
     return zip
 
 
-user=User
-password=Password
+user=str(User)
+password=str(Password)
 
 layer_data = Vector_Layer
 data_type='vector'
@@ -51,7 +51,7 @@ upload_path='/layers/upload'
 layer_title=Title
 abstract=Abstract
 
-base_url = Geonode_URL
+base_url = str(Geonode_URL)
 login_url=base_url+login_path
 upload_url=base_url+upload_path
 
@@ -84,6 +84,7 @@ print "1/3 - First GET to retrieve the CSRFToken"
 client=requests.session()
 client.get(login_url)
 csrftoken= client.cookies['csrftoken']
+
 print "2/3 - Using the previously retrieved CSRFToken I perform a post"
 login_data = dict(username=user, password=password, csrfmiddlewaretoken=csrftoken, next='/')
 r = client.post(login_url, data=login_data, headers=dict(Referer=login_url))

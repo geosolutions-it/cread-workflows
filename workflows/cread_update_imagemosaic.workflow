@@ -40,7 +40,7 @@ Input Vector
 Select on the file system the raster to process
 !INSTRUCTIONS
 .ALGORITHM:script:publishmosaicgranule
-.PARAMETERS:{"Geoserver_URL": "http://192.168.50.170:8080/geoserver", "Image_mosaic_Store_Name": "countryMosaic"}
+.PARAMETERS:{"Username": "your_username", "Password": "your_password", "Geoserver_URL": "http://[ip]:[port]/geoserver", "Image_mosaic_Store_Name": "countryMosaic"}
 .MODE:Normal
 .INSTRUCTIONS:
 STEP 4/4 - Geoserver ImageMosaic update

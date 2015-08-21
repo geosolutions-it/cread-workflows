@@ -1,7 +1,7 @@
 .NAME:Process and Publish CSV
 .GROUP:C-READ
 .ALGORITHM:script:createvrt
-.PARAMETERS:{"Geometry_encoding": "wkt", "Geometry_type": "wkbPoint", "Layer_name": "a_layer_name", "Geometry_field_name": "the_geom"}
+.PARAMETERS:{"Geometry_encoding": "wkt", "Geometry_type": "wkbPoint", "Geometry_field_name": "the_geom"}
 .MODE:Normal
 .INSTRUCTIONS:
 GEONODE CSV PUBLISHER
@@ -21,13 +21,9 @@ STEP 1/4 - VRT Creation
 In order to be able to do convert a CSV in a Shapefile an intermediate format called  VRT (ViRtual Format) file must be provided.
 More information about mapping a CSV on a VRT are here: http://www.gdal.org/gdal_vrttut.html
 
-MAIN PARAMS 
+MAIN PARAMS
 
-Layer name -> the name of the csv file without the extension ".csv"
-
-src Datasource -> the input CSV file
-
-NOTE: Layer name must be the same of the src Datasource
+CSV datasource file -> the input CSV file
 
 !INSTRUCTIONS
 .ALGORITHM:gdalogr:convertformat
@@ -64,7 +60,7 @@ You can also improve that query performing a more complex filtering but be aware
 -> DON'T delete the quote around the [attribute] when you replace the value!
 !INSTRUCTIONS
 .ALGORITHM:script:geonodevectorpublisher
-.PARAMETERS:{"Abstract": "Insert a description", "Password": "your_password", "User": "admin", "Geonode_URL": "http://192.168.50.170:8000", "Title": "Insert a tiltle"}
+.PARAMETERS:{"Abstract": "Insert a description", "Password": "your_password", "User": "your_username", "Geonode_URL": "http://[ip]:[port]", "Title": "Insert a tiltle"}
 .MODE:Normal
 .INSTRUCTIONS:
 STEP 4/4 - Geonode Layer publication
@@ -88,7 +84,7 @@ The user password
 Vector Layer
 The previously created layer opened in the current project
 
-Title 
+Title
 A geonode metyadata
 
 Abstact
