@@ -1,7 +1,7 @@
 from string import Template 
+import os
 
-##Layer_name=string a_layer_name
-##src_Datasource=file
+##CSV_datasource_file=file
 ##Geometry_type=string wkbPoint
 ##SRS=crs EPSG:4326
 ##Geometry_encoding=string wkt
@@ -9,11 +9,13 @@ from string import Template
 
 ##output_vrt_path=output file
 
-tmpFolder='D:/work/data/cread/'
+myfilepath = processing.getObject(CSV_datasource_file).dataProvider().dataSourceUri()
+(myDirectory,nameFile) = os.path.split(myfilepath)
+Layer_name=nameFile.split('.')[0]
 
 args = {
     'layer_name': Layer_name,
-    'srcDatasource': src_Datasource,
+    'srcDatasource': CSV_datasource_file,
     'geometry_type': Geometry_type,
     'srs': SRS,
     'geomEncoding': Geometry_encoding,
@@ -27,7 +29,7 @@ vrt_content = s.safe_substitute(**args)
 
 print str(vrt_content)
 
-vrt_path=tmpFolder + args['layer_name'] + '.vrt'
+vrt_path=myDirectory + "/" + args['layer_name'] + '.vrt'
 f=open(vrt_path, 'w')
 f.write(vrt_content)
 f.close()
