@@ -8,8 +8,9 @@ import zipfile
 #
 # ##Geonode_URL=string http://host[:port]
 #
-##Geonode_URL=string http://192.168.50.170:8000
-##User=string admin
+# test -> ##Geonode_URL=string http://192.168.50.170:8000
+##Geonode_URL=string http://[ip]:[port]
+##User=string your_username
 ##Password=string your_password
 ##Raster_Layer=raster
 ##Title=string Insert a tiltle
