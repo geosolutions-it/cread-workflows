@@ -1,0 +1,8 @@
+<OGRVRTDataSource>
+	<OGRVRTLayer name="police_station_wgs84">
+	<SrcDataSource>D:/work/data/cread/police_station_wgs84.csv</SrcDataSource>
+	<GeometryType>wkbPoint</GeometryType>
+	<LayerSRS>EPSG:4326</LayerSRS>
+	<GeometryField encoding="wkt" field="the_geom" />
+	</OGRVRTLayer>
+</OGRVRTDataSource>
